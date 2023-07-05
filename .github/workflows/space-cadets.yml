@@ -1,7 +1,8 @@
 name: space cadets test
 
 on:
-  push
+  push:
+    branches: ["Space_Cadets"]
 
 jobs:
   build:
