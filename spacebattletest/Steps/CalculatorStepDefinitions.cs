@@ -68,3 +68,110 @@ public class Space_Battle
           except.Should().BeOfType<System.ArgumentException>();
      }
 }
+
+[Binding, Scope(Feature = "Топливо")]
+public class Space_Fuel
+{
+     private SpaceShip ship =  new SpaceShip();
+     private Exception except {get; set;}
+     [Given(@"космический корабль имеет топливо в объеме (.*) ед")]
+     public void Fuel_Count(double a)
+     {
+          ship.fuel_count = a;
+     }
+
+     [Given(@"имеет скорость расхода топлива при движении (.*) ед")]
+     public void Consaption_count(double b)
+     {
+          ship.consumption = b;
+     }
+
+
+     [When(@"происходит прямолинейное равномерное движение без деформации")]
+     public void Movement()
+     {
+          try
+          {
+               ship.fuel_count = spacebattle.SpaceShip.Fuel(ship.fuel_count,ship.consumption);
+          }
+          catch(ArgumentException e)
+          {
+               except = e;
+          }
+     }
+
+
+     [Then(@"новый объем топлива космического корабля равен (.*) ед")]
+     public void Consumption(double expect)
+     {
+          ship.fuel_count.Should().Be(expect);
+     }
+
+     [Then(@"возникает ошибка Exception")]
+     public void Exeption()
+     {
+          except.Should().BeOfType<System.ArgumentException>();
+     }
+}
+[Binding, Scope(Feature = "Угол")]
+public class Space_corner
+{
+     private SpaceShip ship =  new SpaceShip();
+     private Exception except {get; set;}
+     [Given(@"космический корабль имеет угол наклона (.*) град к оси OX")]
+     public void Ship_corner(double a)
+     {
+          ship.corner = a;
+     }
+
+     [Given(@"космический корабль, угол наклона которого невозможно определить")]
+     public void Ship_corner_NaN()
+     {
+          ship.corner = double.NaN;
+     }
+
+     [Given(@"невозможно изменить уголд наклона к оси OX космического корабля")]
+     public void Ship_corner_Stop()
+     {
+          ship.corner = double.NaN;
+     }
+
+     [Given(@"имеет мгновенную угловую скорость (.*) град")]
+     public void Ship_corner_speed(double b)
+     {
+          ship.corner_speed = b;
+     }
+
+     [Given(@"мгновенную угловую скорость невозможно определить")]
+     public void Ship_corner_speed_NaN()
+     {
+          ship.corner_speed = double.NaN;
+     }
+
+
+     [When(@"происходит вращение вокруг собственной оси")]
+     public void Rotation()
+     {
+          try
+          {
+               ship.corner = spacebattle.SpaceShip. Corner_speed(ship.corner,ship.corner_speed);
+          }
+          catch(ArgumentException e)
+          {
+               except = e;
+          }
+     }
+
+
+     [Then(@"угол наклона космического корабля к оси OX составляет (.*) град")]
+     public void Consumption(double expect)
+     {
+          ship.corner.Should().Be(expect);
+     }
+
+     [Then(@"возникает ошибка Exception")]
+     public void Exeption()
+     {
+          except.Should().BeOfType<System.ArgumentException>();
+     }
+}
