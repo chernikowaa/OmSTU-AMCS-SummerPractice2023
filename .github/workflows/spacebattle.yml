@@ -2,7 +2,7 @@ name: space battle test
 
 on:
   push:
-    branches: ["space_battle"]
+    branches: ["spaca_battle"]
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
         run: dotnet restore ./spacebattle
 
       - name: Build
-        run: dotnet build ./Spacebattle --no-restore /p:ContinuousIntegrationBuild=true
+        run: dotnet build ./spacebattle --no-restore /p:ContinuousIntegrationBuild=true
 
       - name: Test
         run: cd spacebattle && dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
