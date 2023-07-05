@@ -1,9 +1,8 @@
 name: broken
 
 on:
-  push:
-    branches: ["broken/LilyaBrik"]
-
+  push
+    
 jobs:
   build:
     runs-on: ubuntu-latest
