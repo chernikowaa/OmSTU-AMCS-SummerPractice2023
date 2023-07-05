@@ -2,7 +2,7 @@ name: space battle test
 
 on:
   push:
-    branches: ["spaca_battle"]
+    branches: ["spaca_battle_upgrade"]
 
 jobs:
   build:
