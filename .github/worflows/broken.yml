@@ -2,7 +2,7 @@ name: broken
 
 on:
   push:
-    branches: ["space_battle"]
+    branches: ["spaca_battle"]
     
 jobs:
   build:
