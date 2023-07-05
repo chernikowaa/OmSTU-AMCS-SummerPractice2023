@@ -1,8 +1,8 @@
 name: broken
 
 on:
-  push
-
+  push:
+    branches: ["broken/LilyaBrik"]
 
 jobs:
   build:
